@@ -8,6 +8,11 @@ def index():
     return render_template('index.html')
 
 
+@app.route('/login')
+def login():
+    return render_template('auth/login.html')
+
+
 def pag_no_encontrada(error):
     return render_template('errores/404.html'), 404
 
