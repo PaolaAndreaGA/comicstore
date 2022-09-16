@@ -10,7 +10,7 @@
 
 <p class="comics">COMICS WORLD SHOP</p>
 
-<form class="form-signin w-100 m-auto">
+<form class="form-signin w-100 m-auto" action="/login" method="post">
   <br></br>
   <h1 class="h3 mb-3 fw-normal">Inicio de Sesión</h1>
 
@@ -18,17 +18,20 @@
     <input type="text" class="form-control" id="username" name="username" placeholder="Usuario">
     <label for="username">Usuario</label>
   </div>
+
   <div class="form-floating">
-    <input type="password" class="form-control" id="floatingPassword" name="password"placeholder="Contraseña">
+    <input type="password" class="form-control" id="password" name="password"placeholder="Contraseña">
     <label for="password">Contraseña</label>
   </div>
   </div>
-  
+
   <button class="w-100 btn btn-lg btn-primary active" type="submit">Ingresar</button>
   <div class="checkbox mb-3">
+    <br />
     <label>
       <input type="checkbox" value="remember-me"> Recuerdame!
     </label>
+    <br />
     <p> No tienes una cuenta?</p>
     <p> Crear Cuenta</p>
   <p class="mt-5 mb-3 text-muted">&copy; Rockets Koders - 2022</p>
