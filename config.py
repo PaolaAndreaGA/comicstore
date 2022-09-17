@@ -2,7 +2,7 @@ from decouple import config
 
 
 class Config:
-    SECRET_KEY = 'Andrea8727.'
+    SECRET_KEY = 'Ahitienesucasapintada.'
 
 
 class DevelopmentConfig(Config):
