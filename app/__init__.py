@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, url_for, redirect
 from flask_mysqldb import MySQL
 from flask_wtf.csrf import CSRFProtect
 
+from .models.Modelolibro import Modelolibro
+
 app = Flask(__name__)
 
 csrf = CSRFProtect()
@@ -28,6 +30,18 @@ def login():
     else:
         return render_template('auth/login.html')
 
+
+@app.route('/libros')
+def listados_libros():
+    try:
+        libros = Modelolibro.listar_libros(db)
+        data = {
+            'libros': libros
+        }
+        return render_template('listado_libros.html', data = data)
+    except Exception as ex:
+        print(ex)
+   
 
 def pag_no_encontrada(error):
     return render_template('errores/404.html'), 404
