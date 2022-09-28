@@ -1,8 +1,12 @@
 from flask import Flask, render_template, request, url_for, redirect
 from flask_mysqldb import MySQL
 from flask_wtf.csrf import CSRFProtect
+from app.models.ModeloUsuario import ModeloUsuario
+from app.models.entities.Usuario import Usuario
+
 
 from .models.Modelolibro import Modelolibro
+from .models.ModeloUsuario import ModeloUsuario
 
 app = Flask(__name__)
 
@@ -21,9 +25,11 @@ def login():
     print(request.method)
 
     if request.method == 'POST':
-        print(request.form['username'])
-        print(request.form['password'])
-        if request.form['username'] == 'admin1' and request.form['password'] == 'admin010':
+        # print(request.form['username'])
+        # print(request.form['password'])
+        usuario = Usuario(None, request.form['usuario'], request.form['password'], None)
+        logueado = ModeloUsuario.login(db,usuario)
+        if logueado:
             return redirect(url_for('index'))
         else:
             return render_template('auth/login.html')
@@ -38,10 +44,10 @@ def listados_libros():
         data = {
             'libros': libros
         }
-        return render_template('listado_libros.html', data = data)
+        return render_template('listado_libros.html', data=data)
     except Exception as ex:
         print(ex)
-   
+
 
 def pag_no_encontrada(error):
     return render_template('errores/404.html'), 404
